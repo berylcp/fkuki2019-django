@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title %}FK UKI 2019 | Profil{% endblock %}
+
+{% block content %}
+
+<div class="w3-container w3-padding">
+
+    <img src="{{ user.profile.foto_profil.url }}" style="width: 200px;" alt="Foto Profil">
+    <p>Nama : {{ user.get_full_name }}</p>
+    <p>NIM : {{ user.username }}</p>
+    <p>No. HP : {{ user.profile.nomor_hp }}</p>
+    <p>Email : {{ user.email }}</p>
+</div>
+
+{% endblock %}

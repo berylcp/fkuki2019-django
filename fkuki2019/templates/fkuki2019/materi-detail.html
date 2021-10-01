@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Materi | {{ materi.judul }}{% endblock %}
+
+
+{% block content %}
+<div class="w3-container">
+    <h1>{{ materi.judul }}</h1>
+
+    <p>{{ materi.deskripsi }}</p>
+
+    <img src="{{ materi.thumbnail.url }}" alt="{{ materi.judul }}" width="200px">
+
+    <div class="w3-bar w3-black w3-margin-top">
+        <button class="w3-bar-item w3-button" onclick="openSubject('KuliahPakar')">Kuliah Pakar</button>
+        <button class="w3-bar-item w3-button" onclick="openSubject('Praktikum')">Praktikum</button>
+        <button class="w3-bar-item w3-button" onclick="openSubject('SkillsLab')">Skills Lab</button>
+    </div>
+
+    <div id="KuliahPakar" class="w3-container subject">
+        <h2>Kuliah Pakar</h2>
+        {{ materi.kuliahpakar | safe }}
+    </div>
+
+    <div id="Praktikum" class="w3-container subject" style="display:none">
+        <h2>Praktikum</h2>
+        {{ materi.praktikum | safe }}
+    </div>
+
+    <div id="SkillsLab" class="w3-container subject" style="display:none">
+        <h2>Skills Lab</h2>
+        {{ materi.skillslab | safe }}
+    </div>
+</div>
+
+<script>
+    function openSubject(subjectName) {
+        var i;
+        var x = document.getElementsByClassName("subject");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(subjectName).style.display = "block";
+    }
+</script>
+{% endblock %}

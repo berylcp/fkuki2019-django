@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- W3CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <!-- Fontawesome Icons v5.6.3 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/site.css' %}">
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'main/img/uki-logo.png' %}" />
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class="w3-bar w3-gray w3-padding">
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button">Beranda</a>
+        <a href="{% url 'materi' %}" class="w3-bar-item w3-button">Materi</a>
+        <a href="{% url 'profil' %}" class="w3-bar-item w3-button">Profil</a>
+        <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-right">Log Out</a>
+        <a href="{% url 'cari' %}" class="w3-bar-item w3-button w3-right">Cari</a>
+    </div>
+
+    {% else %}
+    <div class="w3-display-container w3-display-middle">
+        <h1>Login</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    {% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+</body>
+
+</html>
