@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Materi | {{ materi.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ materi.title }}</h1>
+<strong>{{ materi.description }}</strong>
+
+<hr>
+
+<h2>Kuliah Pakar</h2>
+<p>{{ materi.kuliahpakar | safe }}</p>
+<h2>Praktikum</h2>
+<p>{{ materi.praktikum | safe }}</p>
+<h2>Keterampilan Medis</h2>
+<p>{{ materi.keterampilanmedis | safe }}</p>
+{% endblock %}

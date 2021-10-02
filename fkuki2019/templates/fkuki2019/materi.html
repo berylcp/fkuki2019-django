@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Materi | FK UKI 2019{% endblock %}
+
+{% block content %}
+<h1>Materi</h1>
+
+<hr>
+
+<ul>
+    {% for materi in materis %}
+    <li><a href="{% url 'materi_detail' materi.slug %}">{{ materi.title }}</a></li>
+    {% endfor %}
+</ul>
+
+<ul>
+    {% if materis.has_previous %}
+    <li><a href="{% url 'materi' %}?page={{ materis.previous_page_number }}">←</a></li>
+    {% endif %}
+
+    {% if materis.has_next %}
+    <li><a href="{% url 'materi' %}?page={{ materis.next_page_number }}">→</a></li>
+    {% endif %}
+</ul>
+{% endblock %}

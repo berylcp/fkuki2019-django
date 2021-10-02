@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Nilai | FK UKI 2019{% endblock %}
+
+
+{% block content %}
+<h1>Nilai</h1>
+
+<hr>
+
+{% for nilai in nilais %}
+{{ nilai.content | safe}}
+{% endfor %}
+{% endblock %}

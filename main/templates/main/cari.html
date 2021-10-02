@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Cari | FK UKI 2019{% endblock %}
+
+{% block content %}
+<h1>Cari Materi</h1>
+<form action="/cari" method="get">
+    <input id="q" name="q" value="{{ request.GET.q }}" class="form-control" type="search" placeholder="Search..."
+        aria-label="Search">
+    <button type="submit">Cari</button>
+</form>
+
+<hr>
+
+{% for materi in materis %}
+<ul>
+    <li><a href="{% url 'materi_detail' materi.slug %}">{{ materi.title }}</a></li>
+</ul>
+{% endfor %}
+{% endblock %}
