@@ -16,6 +16,6 @@ def cari(request):
     if q == None or q == "":
         materis = Materi.objects.all()
     elif q is not None:
-        materis = Materi.objects.filter(Q(title__contains=q) | Q(description__contains=q))
+        materis = Materi.objects.filter(Q(title__contains=q) | Q(description__contains=q) | Q(kuliahpakar__contains=q) | Q(praktikum__contains=q) | Q(keterampilanmedis__contains=q))
 
     return render(request, 'main/cari.html', {'materis': materis})
