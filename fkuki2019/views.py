@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/akun/login/')
 def materi(request):
-    materis = Materi.objects.all().order_by('title')
+    materis = Materi.objects.all().order_by('-title')
 
     p = Paginator(materis, 5)
     page_num = request.GET.get('page', 1)
