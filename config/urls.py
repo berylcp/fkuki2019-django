@@ -29,4 +29,5 @@ urlpatterns = [
     path('materi/<slug:slug>/', fkuki2019_views.materi_detail, name='materi_detail'),
     path('cari/', main_views.cari, name='cari'),
     path('nilai/', fkuki2019_views.nilai, name='nilai'),
+    path('jadwal/', fkuki2019_views.jadwal, name='jadwal'),
 ]

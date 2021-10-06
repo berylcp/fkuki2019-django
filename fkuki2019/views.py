@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from fkuki2019.models import Materi, Nilai
+from fkuki2019.models import Materi, Nilai, Jadwal
 from django.core.paginator import Paginator, EmptyPage
 from django.contrib.auth.decorators import login_required
 
@@ -27,3 +27,8 @@ def materi_detail(request, slug=None):
 def nilai(request):
     nilais = Nilai.objects.all()
     return render(request, 'fkuki2019/nilai.html', {'nilais': nilais})
+
+@login_required(login_url='/akun/login/')
+def jadwal(request):
+    jadwals = Jadwal.objects.all()
+    return render(request, 'fkuki2019/jadwal.html', {'jadwals': jadwals})

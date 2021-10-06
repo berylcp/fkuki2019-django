@@ -1,5 +1,5 @@
 from django.contrib import admin
-from fkuki2019.models import Materi, Nilai
+from fkuki2019.models import Materi, Nilai, Jadwal
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ class MateriAdmin(admin.ModelAdmin):
 
 admin.site.register(Materi, MateriAdmin)
 admin.site.register(Nilai)
+admin.site.register(Jadwal)

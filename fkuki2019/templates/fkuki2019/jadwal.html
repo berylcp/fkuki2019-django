@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Jadwal | FK UKI 2019{% endblock %}
+
+{% block content %}
+{% for jadwal in jadwals %}
+<h1>{{ jadwal.title }}</h1>
+
+{{ jadwal.content | safe}}
+{% endfor %}
+{% endblock %}

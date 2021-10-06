@@ -29,3 +29,10 @@ class Nilai(models.Model):
     
     def __str__(self):
         return self.title
+
+class Jadwal(models.Model):
+    title = models.CharField(max_length=255, default='')
+    content = HTMLField(default='')
+    
+    def __str__(self):
+        return self.title
