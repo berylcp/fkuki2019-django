@@ -3,15 +3,33 @@
 {% block title %}Materi | {{ materi.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ materi.title }}</h1>
-<strong>{{ materi.description }}</strong>
+<div class="container mt-5">
+    <h1>{{ materi.title }}</h1>
 
-<hr>
+    <strong>{{ materi.description }}</strong>
 
-<h2>Kuliah Pakar</h2>
-<p>{{ materi.kuliahpakar | safe }}</p>
-<h2>Praktikum</h2>
-<p>{{ materi.praktikum | safe }}</p>
-<h2>Keterampilan Medis</h2>
-<p>{{ materi.keterampilanmedis | safe }}</p>
+    <hr>
+
+    <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-kp-tab" data-bs-toggle="tab" href="#nav-kp" role="tab" aria-controls="nav-kp"
+            aria-selected="true">Kuliah Pakar</a>
+
+        <a class="nav-link" id="nav-pr-tab" data-bs-toggle="tab" href="#nav-pr" role="tab" aria-controls="nav-pr"
+            aria-selected="false">Praktikum</a>
+
+        <a class="nav-link" id="nav-km-tab" data-bs-toggle="tab" href="#nav-km" role="tab" aria-controls="nav-km"
+            aria-selected="false">Keterampilan Medis</a>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-kp" role="tabpanel" aria-labelledby="nav-kp-tab">
+            {{ materi.kuliahpakar | safe }}
+        </div>
+        <div class="tab-pane fade" id="nav-pr" role="tabpanel" aria-labelledby="nav-pr-tab">
+            {{ materi.praktikum | safe }}
+        </div>
+        <div class="tab-pane fade" id="nav-km" role="tabpanel" aria-labelledby="nav-km-tab">
+            {{ materi.keterampilanmedis | safe }}
+        </div>
+    </div>
+</div>
 {% endblock %}

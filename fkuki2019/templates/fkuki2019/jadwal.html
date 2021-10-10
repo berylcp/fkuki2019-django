@@ -3,9 +3,11 @@
 {% block title %}Jadwal | FK UKI 2019{% endblock %}
 
 {% block content %}
-{% for jadwal in jadwals %}
-<h1>{{ jadwal.title }}</h1>
+<div class="container mt-5">
+    {% for jadwal in jadwals %}
+    <h1>{{ jadwal.title }}</h1>
 
-{{ jadwal.content | safe}}
-{% endfor %}
+    {{ jadwal.content | safe}}
+    {% endfor %}
+</div>
 {% endblock %}

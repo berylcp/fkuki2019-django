@@ -3,23 +3,48 @@
 {% block title %}Materi | FK UKI 2019{% endblock %}
 
 {% block content %}
-<h1>Materi</h1>
+<div class="container mt-5">
+    <h1>Materi</h1>
 
-<hr>
+    <hr>
 
-<ul>
     {% for materi in materis %}
-    <li><a href="{% url 'materi_detail' materi.slug %}">{{ materi.title }}</a></li>
+    <div class="list-group">
+        <a href="{% url 'materi_detail' materi.slug %}" class="list-group-item list-group-item-action my-1">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ materi.title }}</h5>
+            </div>
+            <p class="mb-1">{{ materi.description }}</p>
+        </a>
+    </div>
     {% endfor %}
-</ul>
 
-<ul>
-    {% if materis.has_previous %}
-    <li><a href="{% url 'materi' %}?page={{ materis.previous_page_number }}">←</a></li>
-    {% endif %}
+    <p>Halaman {{ materis.number }} dari
+        {{ materis.paginator.num_pages }}</p>
 
-    {% if materis.has_next %}
-    <li><a href="{% url 'materi' %}?page={{ materis.next_page_number }}">→</a></li>
-    {% endif %}
-</ul>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if materis.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'materi' %}?page={{ materis.previous_page_number }}"
+                    aria-label="Previous">
+                    <span aria-hidden="true">« Sebelumnya</span>
+                </a>
+            </li>
+
+            <li class="page-item"><a class="page-link" href="{% url 'materi' %}?page=1">Pertama</a></li>
+            {% endif %}
+
+            {% if materis.has_next %}
+            <li class="page-item"><a class="page-link" href="{% url 'materi' %}?page=3">Terakhir</a></li>
+
+            <li class="page-item">
+                <a class="page-link" href="{% url 'materi' %}?page={{ materis.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">Selanjutnya »</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
 {% endblock %}

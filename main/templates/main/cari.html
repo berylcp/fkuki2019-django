@@ -3,18 +3,23 @@
 {% block title %}Cari | FK UKI 2019{% endblock %}
 
 {% block content %}
-<h1>Cari Materi</h1>
-<form action="/cari" method="get">
-    <input id="q" name="q" value="{{ request.GET.q }}" class="form-control" type="search" placeholder="Search..."
-        aria-label="Search">
-    <button type="submit">Cari</button>
-</form>
-
-<hr>
-
-{% for materi in materis %}
-<ul>
-    <li><a href="{% url 'materi_detail' materi.slug %}">{{ materi.title }}</a></li>
-</ul>
-{% endfor %}
+<div class="container mt-5">
+    <h1>Cari Materi</h1>
+    <form class="d-flex" action="/cari" method="get">
+        <input class="form-control me-2" id="q" name="q" value="{{ request.GET.q }}" type="search"
+            placeholder="Cari materi..." aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Cari</button>
+    </form>
+    <p>Hasil pencarian :</p>
+    {% for materi in materis %}
+    <div class="list-group">
+        <a href="{% url 'materi_detail' materi.slug %}" class="list-group-item list-group-item-action my-1">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ materi.title }}</h5>
+            </div>
+            <p class="mb-1">{{ materi.description }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

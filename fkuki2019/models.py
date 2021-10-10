@@ -8,9 +8,9 @@ from tinymce.models import HTMLField
 class Materi(models.Model):
     title = models.CharField(max_length=255, default='')
     description = models.CharField(max_length=255, default='')
-    kuliahpakar = HTMLField(default='')
-    praktikum = HTMLField(default='')
-    keterampilanmedis = HTMLField(default='')
+    kuliahpakar = HTMLField(default='', blank=True)
+    praktikum = HTMLField(default='', blank=True)
+    keterampilanmedis = HTMLField(default='', blank=True)
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):

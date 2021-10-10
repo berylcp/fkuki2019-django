@@ -4,11 +4,14 @@
 
 
 {% block content %}
-{% for nilai in nilais %}
-<h1>{{ nilai.title }}</h1>
+<div class="container mt-5">
 
-<hr>
+    <h1>Nilai</h1>
 
-{{ nilai.content | safe}}
-{% endfor %}
+    <hr>
+
+    {% for nilai in nilais %}
+    {{ nilai.content | safe}}
+    {% endfor %}
+</div>
 {% endblock %}

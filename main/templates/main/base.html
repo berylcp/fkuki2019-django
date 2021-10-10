@@ -13,23 +13,63 @@
 
     <title>{% block title %}{% endblock %}</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="{% static 'main/css/site.css' %}">
 </head>
 
 <body>
     {% if user.is_authenticated %}
-    <ul>
-        <li><a href="{% url 'index' %}">Beranda</a></li>
-        <li><a href="{% url 'jadwal' %}">Jadwal</a></li>
-        <li><a href="{% url 'materi' %}">Materi</a></li>
-        <li><a href="{% url 'nilai' %}">Nilai</a></li>
-        <li><a href="{% url 'cari' %}">Cari</a></li>
-    </ul>
+    <header>
+        <nav class="navbar navbar-expand-xl navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">FK UKI 2019</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBasic"
+                    aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarBasic">
+                    <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'jadwal' %}">Jadwal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'materi' %}">Materi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'nilai' %}">Nilai</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" action="/cari" method="get">
+                        <input class="form-control me-2" id="q" name="q" value="{{ request.GET.q }}" type="search"
+                            placeholder="Cari materi..." aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Cari</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
     {% else %}
 
     {% endif %}
     {% block content %} {% endblock %}
-    <link rel="stylesheet" href="{% static 'main/js/app.js' %}">
+
+    <hr>
+
+    <footer class="text-center">
+        <p>Hak Cipta © <span id="tahun"></span> FK UKI 2019</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    </script>
+    <script src="{% static 'main/js/app.js' %}"></script>
 </body>
 
 </html>
