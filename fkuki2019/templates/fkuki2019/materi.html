@@ -31,13 +31,9 @@
                     <span aria-hidden="true">« Sebelumnya</span>
                 </a>
             </li>
-
-            <li class="page-item"><a class="page-link" href="{% url 'materi' %}?page=1">Pertama</a></li>
             {% endif %}
 
             {% if materis.has_next %}
-            <li class="page-item"><a class="page-link" href="{% url 'materi' %}?page=3">Terakhir</a></li>
-
             <li class="page-item">
                 <a class="page-link" href="{% url 'materi' %}?page={{ materis.next_page_number }}" aria-label="Next">
                     <span aria-hidden="true">Selanjutnya »</span>
