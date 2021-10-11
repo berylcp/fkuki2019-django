@@ -11,7 +11,9 @@
     <hr>
 
     {% for nilai in nilais %}
-    {{ nilai.content | safe}}
+    <article>
+        {{ nilai.content | safe}}
+    </article>
     {% endfor %}
 </div>
 {% endblock %}

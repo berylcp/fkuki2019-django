@@ -7,7 +7,9 @@
     {% for jadwal in jadwals %}
     <h1>{{ jadwal.title }}</h1>
 
-    {{ jadwal.content | safe}}
+    <article>
+        {{ jadwal.content | safe}}
+    </article>
     {% endfor %}
 </div>
 {% endblock %}

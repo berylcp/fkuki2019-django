@@ -4,22 +4,30 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1>Cari Materi</h1>
-    <form class="d-flex" action="/cari" method="get">
-        <input class="form-control me-2" id="q" name="q" value="{{ request.GET.q }}" type="search"
-            placeholder="Cari materi..." aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Cari</button>
-    </form>
-    <p>Hasil pencarian :</p>
-    {% for materi in materis %}
-    <div class="list-group">
-        <a href="{% url 'materi_detail' materi.slug %}" class="list-group-item list-group-item-action my-1">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{ materi.title }}</h5>
-            </div>
-            <p class="mb-1">{{ materi.description }}</p>
-        </a>
-    </div>
-    {% endfor %}
+    <section>
+        <h1>Cari Materi</h1>
+
+        <form class="d-flex" action="/cari" method="get">
+            <input class="form-control me-2" id="q" name="q" value="{{ request.GET.q }}" type="search"
+                placeholder="Cari materi..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Cari</button>
+        </form>
+
+        <p>Hasil pencarian :</p>
+    </section>
+
+    <section class="list-group">
+        {% for materi in materis %}
+        <article>
+            <a href="{% url 'materi_detail' materi.slug %}" class="list-group-item list-group-item-action my-1">
+                <header class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ materi.title }}</h5>
+                </header>
+
+                <footer class="mb-1">{{ materi.description }}</footer>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
 </div>
 {% endblock %}
